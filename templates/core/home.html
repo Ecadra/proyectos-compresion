@@ -1,39 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Inicio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Bienvenido a la Página de Inicio</h1>
-        <p>Esta es una página de inicio sencilla creada con HTML y CSS.</p>
+
+<!-- Primera linea de la aplicación de plantillas, indica de qué plantilla hereda -->
+{% extends 'base.html' %}
+
+<!-- En esta página, quiero que el bloque title diga "Página de inicio", no compresión de archivos como en base.html -->
+{% block title %}
+    Página de Inicio
+{% endblock title %}
+
+<!-- El bloque de contenido será lo siguiente -->
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center">Bienvenido a la Página de Compresión de Archivos</h1>
+        <p class="text-center">Esta es una plataforma para comprimir y descomprimir archivos de manera eficiente.</p>
     </div>
-</body>
-</html>
+{% endblock content %}
