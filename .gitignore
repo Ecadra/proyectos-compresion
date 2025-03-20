@@ -1,0 +1,12 @@
+# Ignorar archivos .pyc
+*.pyc
+
+# Ignorar la carpeta __pycache__
+__pycache__/
+
+# Ignorar entorno virtual
+.venv/
+
+# Ignorar archivos de IDE
+.idea/
+.vscode/
