@@ -40,7 +40,9 @@ def calcular_estadisticas(texto):
     # Calcular medidas de tendencia central
     media = total_caracteres / len(frecuencia)
     mediana = frec_absolutas_acum[len(frec_absolutas_acum) // 2]
-    moda = max(frecuencia, key=frecuencia.get)
+    max_frecuencia = max(frecuencia.values())
+    caracter_mas_repetido= [character for character, frec in frecuencia.items() if frec == max_frecuencia]
+    moda = f'El caracter más repetido en el texto es: {caracter_mas_repetido}'
 
     # Calcular medidas de dispersión
     rango = max(frec_absolutas) - min(frec_absolutas)
@@ -64,5 +66,5 @@ def index(request):
 
         estadisticas = calcular_estadisticas(texto)
 
-        return render(request, 'estadistico/resultados.html', {'estadisticas': estadisticas})
+        return render(request, 'estadistico/resultados.html', {'estadisticas': estadisticas, 'texto': texto})
     return render(request, 'estadistico/upload.html')
