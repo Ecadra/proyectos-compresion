@@ -21,6 +21,7 @@ def calcular_estadisticas(texto):
     # Calcular frecuencias absolutas, relativas y acumuladas
     acumulado_absoluto = 0
     acumulado_relativo = 0
+
     for caracter in caracteres_ordenados:
         frec_abs = frecuencia[caracter]
         frec_rel = frec_abs / total_caracteres
@@ -28,7 +29,12 @@ def calcular_estadisticas(texto):
         acumulado_absoluto += frec_abs
         acumulado_relativo += frec_rel
 
-        caracteres.append(caracter)
+        if not caracter.isprintable():
+            caracter_legible = repr(caracter)
+            caracteres.append(caracter_legible)
+        else:
+            caracteres.append(caracter)
+
         frec_absolutas.append(frec_abs)
         frec_absolutas_acum.append(acumulado_absoluto)
         frec_relativas.append(frec_rel)
@@ -41,7 +47,9 @@ def calcular_estadisticas(texto):
     media = total_caracteres / len(frecuencia)
     mediana = frec_absolutas_acum[len(frec_absolutas_acum) // 2]
     max_frecuencia = max(frecuencia.values())
-    caracter_mas_repetido= [character for character, frec in frecuencia.items() if frec == max_frecuencia]
+    caracter_mas_repetido= [character for character, frec in frecuencia.items() if frec == max_frecuencia ]
+    if not caracter_mas_repetido[0].isprintable():
+        caracter_mas_repetido = repr(caracter_mas_repetido)
     moda = f'El caracter más repetido en el texto es: {caracter_mas_repetido}'
 
     # Calcular medidas de dispersión
@@ -63,8 +71,6 @@ def index(request):
     if request.method == 'POST' and request.FILES['file']:
         uploaded_file = request.FILES['file']
         texto = uploaded_file.read().decode('utf-8')
-
         estadisticas = calcular_estadisticas(texto)
-
         return render(request, 'estadistico/resultados.html', {'estadisticas': estadisticas, 'texto': texto})
     return render(request, 'estadistico/upload.html')
