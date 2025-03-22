@@ -26,8 +26,12 @@
                         <tr>
                             <td>{{ fila.0 }}</td>
                             <td>{{ fila.1 }}</td>
-                            <td>{{ fila.2|floatformat:9 }}</td>
-                            <td>{{ fila.3 }}</td>
+                            <td style=" white-space: pre-wrap;
+                            word-wrap: break-word;
+                            max-width: 400px">{{ fila.2 }}</td>
+                            <td style="white-space: pre-wrap;
+                            word-wrap: break-word;
+                            max-width: 400px">{{ fila.3 }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -48,8 +52,12 @@
                         {% for fila in context.tablaCalculos %}
                         <tr>
                             <td>{{ fila.0 }}</td>
-                            <td>{{ fila.1 }}</td>
-                            <td>{{ fila.2 }}</td>
+                            <td style="white-space: pre-wrap;
+                            word-wrap: break-word;
+                            max-width: 400px">{{ fila.1 }}</td>
+                            <td style="white-space: pre-wrap;
+                            word-wrap: break-word;
+                            max-width: 400px">{{ fila.2 }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -59,7 +67,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Rango</h5>
-                    <p class="card-text">{{ estadisticas.rango }}</p>
+                    <p class="card-text">{{ context.compresion }}</p>
                 </div>
             </div>
         </div>

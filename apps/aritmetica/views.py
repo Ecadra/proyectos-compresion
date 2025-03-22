@@ -28,7 +28,7 @@ def comprimirTexto(texto):
     tablaCaracteres = list(zip(caracteres,
                                (frecuencia[caracter] for caracter in caracteres), 
                                probabilidad,
-                               rangos))
+                               [(format(rango[0], '.15f'), format(rango[1], '.15f')) for rango in rangos]))
 
 
     """ Compresión del texto """
