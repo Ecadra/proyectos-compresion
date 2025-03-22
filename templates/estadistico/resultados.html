@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultados del análisis{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center mb-4">Resultados del análisis</h1>
+            
+            <h2>Tabla de frecuencias</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Carácter</th>
+                            <th scope="col">Frecuencia Absoluta</th>
+                            <th scope="col">Frecuencia Absoluta Acumulada</th>
+                            <th scope="col">Frecuencia Relativa</th>
+                            <th scope="col">Frecuencia Relativa Acumulada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fila in estadisticas.tabla_frecuencias %}
+                        <tr>
+                            <td>{{ fila.0 }}</td>
+                            <td>{{ fila.1 }}</td>
+                            <td>{{ fila.2 }}</td>
+                            <td>{{ fila.3|floatformat:4 }}</td>
+                            <td>{{ fila.4|floatformat:4 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="mt-4">Medidas de tendencia central</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Media</h5>
+                            <p class="card-text">{{ estadisticas.media|floatformat:4 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Mediana</h5>
+                            <p class="card-text">{{ estadisticas.mediana }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Moda</h5>
+                            <p class="card-text">{{ estadisticas.moda }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="mt-4">Medidas de dispersión</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Rango</h5>
+                            <p class="card-text">{{ estadisticas.rango }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Varianza</h5>
+                            <p class="card-text">{{ estadisticas.varianza|floatformat:4 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Desviación Estándar</h5>
+                            <p class="card-text">{{ estadisticas.desviacion_estandar|floatformat:4 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
