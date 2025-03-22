@@ -51,7 +51,7 @@ def comprimirTexto(texto):
                     rango_anterior[0] + (rango_anterior[1] - rango_anterior[0]) * rango_caracter[1] )
         #Se actualiza el texto comprimido con los el rango menor de compresion
         compresion = str(rango_anterior[0])
-        rangoNuevo.append(rango_caracter)
+        rangoNuevo.append(rango_anterior)
         caracter_a_analizar.append(caracter)
     
     tablaCalculos = list(zip(
