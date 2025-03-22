@@ -56,8 +56,8 @@ def comprimirTexto(texto):
     
     tablaCalculos = list(zip(
     caracter_a_analizar,
-    [(format(rango[0], '.750f'), format(rango[1], '.50f')) for rango in rangoAntiguo],  # Formatear rangos antiguos
-    [(format(rango[0], '.750f'), format(rango[1], '.50f')) for rango in rangoNuevo]     # Formatear rangos nuevos
+    [(format(rango[0], '.750f'), format(rango[1], '.750f')) for rango in rangoAntiguo],  # Formatear rangos antiguos
+    [(format(rango[0], '.750f'), format(rango[1], '.750f')) for rango in rangoNuevo]     # Formatear rangos nuevos
 ))
 
     return {
