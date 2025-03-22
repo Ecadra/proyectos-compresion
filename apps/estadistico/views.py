@@ -39,7 +39,11 @@ def calcular_estadisticas(texto):
         frec_relativas_acum.append(acumulado_relativo)
 
     # Crear la tabla de frecuencias
-    tabla_frecuencias = list(zip(caracteres, frec_absolutas, frec_absolutas_acum, frec_relativas, frec_relativas_acum))
+    tabla_frecuencias = list(zip(caracteres, 
+                                 frec_absolutas, 
+                                 frec_absolutas_acum, 
+                                 frec_relativas, 
+                                 frec_relativas_acum))
 
     # Calcular medidas de tendencia central
     media = total_caracteres / len(frecuencia)

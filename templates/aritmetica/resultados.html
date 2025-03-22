@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultados del análisis{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+        <h1 class = "text-center">Texto Analizado</h1>
+        <p class="text-justify">{{ texto }}</p>
+            <h1 class="text-center mb-4">Resultados del análisis</h1>
+            
+            <h2>Tabla de frecuencias, probabilidades y rangos</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Caracter</th>
+                            <th scope="col">Frecuencia de aparicion</th>
+                            <th scope="col">Probabilidad</th>
+                            <th scope="col">Rango</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fila in context.tablaCaracteres %}
+                        <tr>
+                            <td>{{ fila.0 }}</td>
+                            <td>{{ fila.1 }}</td>
+                            <td>{{ fila.2|floatformat:9 }}</td>
+                            <td>{{ fila.3 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="mt-4">Tabla de progreso de compresion</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Caracter a analizar</th>
+                            <th scope="col">Rango antiguo</th>
+                            <th scope="col">Rango nuevo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fila in context.tablaCalculos %}
+                        <tr>
+                            <td>{{ fila.0 }}</td>
+                            <td>{{ fila.1 }}</td>
+                            <td>{{ fila.2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="mt-4">Resultado de la compresion</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Rango</h5>
+                    <p class="card-text">{{ estadisticas.rango }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
