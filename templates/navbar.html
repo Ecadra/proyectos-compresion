@@ -1,0 +1,30 @@
+{% load static %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'images/compresionLogo.png' %}" alt="Logo" width="70" height="70" class="d-inline-block align-text-top rounded-pill">
+            </a>
+            <div class="main-header">
+                <h1 class = "fw-bold main-title text text-white">Proyectos de compresion de datos</h1>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'estadistico' %}">Análisis estadístico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'aritmetica' %}">Análisis aritmético</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'entropia' %}">Análisis de entropía</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'huffman' %}">Análisis de huffman</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
