@@ -1,0 +1,92 @@
+{% extends 'base.html'%}
+
+{%block title%}Entropia del texto analizado {%endblock%}
+
+{%block content%}
+<div class = "container mt-5">
+    <div class = "col">
+        <h1 class = "text-center">Texto analizado</h1>
+        <p class = "text-justify">{{ texto }}</p>
+
+            <h2>Tabla de frencuencias</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class = "thead-dark">
+                        <tr>
+                            <th scope="col">Carácter</th>
+                            <th scope="col">Número de repeticiones</th>
+                            <th scope="col">Frecuencia</th>
+                            <th scope="col">Logaritmo base 2 de la frecuencia</th>
+                            <th scope="col">Frecuencia + Logaritmo</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {%for fila in entropia.tabla_frecuencias%}
+                        <tr>
+                            <td>{{ fila.0 }}</td>
+                            <td>{{ fila.1 }}</td>
+                            <td>{{ fila.2 | floatformat:4}}</td>
+                            <td>{{ fila.3 | floatformat:4}}</td>
+                            <td>{{ fila.4 | floatformat:4}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+
+                </table> 
+            </div>
+
+            <div class = "row">
+                <div class = "col-md-4">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Frecuencia Total</h5>
+                            <p class="card-text">{{entropia.frecuenciaTotal | floatformat:0}}%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class = "row">
+                <div class = "col-md-4">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sumatoria total de los logaritmos</h5>
+                            <p class="card-text">{{entropia.totalSumatoria | floatformat:4}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <h2 class="mt-4">Resultados e interpretación</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class= "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Entropia de Shannon</h5>
+                            <p class="card-text">{{entropia.entropia}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class= "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Interpretación</h5>
+                            <p class="card-text"> Se necesitan al menos {{entropia.entropia}} bits para poder representar cada símbolo.
+                                Representar los símbolos por debajo de este umbral puede provocar pérdidas de información
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br><br><br><br><br><br>
+
+        
+    </div>
+</div>
+{%endblock%}
