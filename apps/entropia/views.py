@@ -17,6 +17,7 @@ def calcular_entropia(texto):
     frecuenciaTotal = 0.0
     totalSumatoria = 0.0
 
+
     for nomcaracter in contarCadaLetra.keys():
         listCaracteres.append(nomcaracter)
 
@@ -38,12 +39,14 @@ def calcular_entropia(texto):
     tabla_frecuencias = list(zip(listCaracteres,listRepeticionCaracteres, listFrecuencias, listLogaritmmos, listFrecueciaxLogaritmo))
     porcentajeFrecuencia=frecuenciaTotal*100
     resultado = math.ceil(entropia)
+    entropiaMultiplicacion = resultado * Numletras 
     
     return{
         'tabla_frecuencias': tabla_frecuencias,
         'frecuenciaTotal':porcentajeFrecuencia,
-        'totalSumatoria': totalSumatoria,
-        'entropia': resultado
+        'totalSumatoria': -1*totalSumatoria,
+        'entropia': resultado,
+        'entropiaMultiplicacion' : entropiaMultiplicacion
     }
     
 
