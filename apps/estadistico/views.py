@@ -35,16 +35,20 @@ def calcular_estadisticas(texto):
 
         frec_absolutas.append(frec_abs)
         frec_absolutas_acum.append(acumulado_absoluto)
-        frec_relativas.append(frec_rel)
-        frec_relativas_acum.append(acumulado_relativo)
+        frec_relativas.append(frec_rel*100)
+        frec_relativas_acum.append(acumulado_relativo*100)
 
+    caracteres.append('Total')
+    frec_absolutas.append(total_caracteres)
+    frec_absolutas_acum.append(total_caracteres)
+    frec_relativas.append(100)
+    frec_relativas_acum.append(100)
     # Crear la tabla de frecuencias
     tabla_frecuencias = list(zip(caracteres, 
                                  frec_absolutas, 
                                  frec_absolutas_acum, 
                                  frec_relativas, 
                                  frec_relativas_acum))
-
     # Calcular medidas de tendencia central
     media = total_caracteres / len(frecuencia)
     mediana = frec_absolutas_acum[len(frec_absolutas_acum) // 2]
