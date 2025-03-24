@@ -17,6 +17,7 @@
                             <th scope="col">Número de repeticiones</th>
                             <th scope="col">Frecuencia</th>
                             <th scope="col">Logaritmo base 2 de la frecuencia</th>
+                            <th scope="col">Frecuencia + Logaritmo</th>
                         </tr>
 
                     </thead>
@@ -27,12 +28,38 @@
                             <td>{{ fila.1 }}</td>
                             <td>{{ fila.2 | floatformat:4}}</td>
                             <td>{{ fila.3 | floatformat:4}}</td>
+                            <td>{{ fila.4 | floatformat:4}}</td>
                         </tr>
                         {%endfor%}
                     </tbody>
 
                 </table> 
             </div>
+
+            <div class = "row">
+                <div class = "col-md-4">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Frecuencia Total</h5>
+                            <p class="card-text">{{entropia.frecuenciaTotal | floatformat:0}}%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class = "row">
+                <div class = "col-md-4">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sumatoria total de los logaritmos</h5>
+                            <p class="card-text">{{entropia.totalSumatoria | floatformat:4}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
             <h2 class="mt-4">Resultados e interpretación</h2>
             <div class="row">
