@@ -59,6 +59,8 @@ def code_text(texto, huffmanCode):
             codificado.append(huffmanCode[caracter])
     return ''.join(codificado)
 
+
+
 def index(request):
    
     if request.method == 'POST' and request.FILES['file']:
@@ -75,6 +77,6 @@ def index(request):
 
         coded=code_text(texto, huffmanCode)
 
-        return render(request,"huffman/resultados.html",{'texto': texto, 'nodes':node, 'huffmanCode' : huffmanCode, 'coded':coded, 'freq':freq})
+        return render(request,"huffman/resultados.html",{'texto': texto, 'nodes':node, 'huffmanCodeItems' : huffmanCode.items(), 'coded':coded, 'freq':freq, 'huffmanCode':huffmanCode})
     
     return render(request, "huffman/upload.html")

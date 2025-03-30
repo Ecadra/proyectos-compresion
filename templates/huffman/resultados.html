@@ -6,29 +6,48 @@
 <div class = "container mt-5">
     <div class = "col">
         <h1 class = "text-center">Texto a codificar</h1>
-        <p class = "text-justify">{{ texto }}</p>
-    </div>
+        <h3 class = "text-justify">{{ texto }}</h3>
 
-    <div class = "row">
-        <div class = "col-md-4">
-            <div class = "card">
-                <div class="card-body">
-                    <h5 class="card-title">Conteo de los caracteres del texto</h5>
-                    <p class="card-text">{{freq}}%</p>
-                </div>
-            </div>
+        <h2>Tabla de ocurrencia</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>
+                        <th scope='col'>Simbolo</th>
+                        <th scope='col'>Ocurrencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for fila in freq%}
+                    <tr>
+                        <td>'{{fila.0}}'</td>
+                        <td>{{fila.1}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
         </div>
-    </div>
 
-    <div class = "row">
-        <div class = "col-md-4">
-            <div class = "card">
-                <div class="card-body">
-                    <h5 class="card-title">Codigos de los caracteres</h5>
-                    <p class="card-text">{{huffmanCode}}%</p>
-                </div>
-            </div>
+        <h2>Tabla de codigos</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>
+                        <th scope='col'>Simbolo</th>
+                        <th scope='col'>Código</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for fila in huffmanCodeItems%}
+                    <tr>
+                        <td>'{{fila.0}}'</td>
+                        <td>{{fila.1}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
         </div>
+
     </div>
 
     <div class = "row">
@@ -36,11 +55,16 @@
             <div class = "card">
                 <div class="card-body">
                     <h5 class="card-title">Texto codificado</h5>
-                    <p class="card-text">{{coded}}%</p>
+                    <p class="card-text">{{coded}}</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <br><br>
+
+
+    
 
 </div>
 {% endblock  %}
