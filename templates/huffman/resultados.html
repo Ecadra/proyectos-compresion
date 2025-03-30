@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+
+{%block title%}Codificación de huffman {%endblock%}
+
+{% block content %}
+<div class = "container mt-5">
+    <div class = "col">
+        <h1 class = "text-center">Texto a codificar</h1>
+        <p class = "text-justify">{{ texto }}</p>
+    </div>
+
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "card">
+                <div class="card-body">
+                    <h5 class="card-title">Conteo de los caracteres del texto</h5>
+                    <p class="card-text">{{freq}}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "card">
+                <div class="card-body">
+                    <h5 class="card-title">Codigos de los caracteres</h5>
+                    <p class="card-text">{{huffmanCode}}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "card">
+                <div class="card-body">
+                    <h5 class="card-title">Texto codificado</h5>
+                    <p class="card-text">{{coded}}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock  %}
