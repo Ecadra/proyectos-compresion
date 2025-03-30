@@ -1,50 +1,80 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import heapq
-from collections import Counter
-
-class Node:
-
-    def __init__(self, symbol = None, frequency = None):
-        self.symbol = symbol #Simbolo o valo del nodo
-        self.frequency = frequency #
-        self.left = None
-        self.right = None
-
-    def __lt__(self, other):#Esta función compara nodos segun su frecuencia 
-        return self.frequency < other.frequency  #En huffman los nodos con menor frecuencia se procesan primero
 
 
-def huffman_tree(dictionaryFrecuency):
-     
-    #Uso del modulo heapq para crear una lista de prioridades
-    priority_queue = [Node(chars, f) for chars, f in dictionaryFrecuency.items()]
-    heapq.heapify(priority_queue)
+class NodeTree(object):
 
-    #Este es el motor para contruir el arbol de huffman
-    while len (priority_queue) > 1:   
-        left_child = heapq.heappop(priority_queue)
-        right_child = heapq.heappop(priority_queue)
-        merged_node = Node(frequency = left_child.frequency + right_child.frequency)
-        merged_node.left = left_child
-        merged_node.right = right_child
-        heapq.heappush(priority_queue, merged_node)
+    def __init__(self, left = None, right = None):
+        
+        self.left = left
+        self.right = right
 
-    return priority_queue[0]
+    def children(self):
+        return(self.left,self.right)
+    
+    def nodes(self):
+        return(self.left,self.right)
+    
+    def __str__(self):
+        return '%s_%s' % (self.left, self.right)
 
-def generate_huffman_codes(node, code = "", huffman_codes={}):
-    if node is not None:
-        if node.symbol is not None:
-            huffman_codes[node.symbol] = code
-        generate_huffman_codes(node.left, code + "0", huffman_codes)
-        generate_huffman_codes(node.right, code + "1", huffman_codes)
-    return huffman_codes
+def huffman_code_tree(node, left = True, binString= ""):
+    if type(node) is str:
+        return {node: binString}
+    (l,r) = node.children()
+    d=dict()
+    d.update(huffman_code_tree(l, True, binString + '0'))
+    d.update(huffman_code_tree(r, False, binString + '1'))
+    return d
 
 def get_frequency(texto):
-    return dict(Counter(texto))
-       
+    freq = {}
+    for c in texto:
+        if c in freq:
+            freq[c] += 1
+        else:
+            freq[c] = 1
+
+    freq = sorted(freq.items(), key=lambda x: x[1],reverse=True)
+    return freq
+
+def create_nodes(freq):
+
+    nodes = freq
+
+    while len(nodes) > 1:
+        (key1, c1) = nodes[-1]
+        (key2, c2) = nodes[-2]
+        nodes = nodes[:-2]
+        node=NodeTree(key1, key2)
+        nodes.append((node, c1 + c2))
+        nodes = sorted(nodes,key=lambda x:x[1], reverse = True)
+
+    return nodes
+
+def code_text(texto, huffmanCode):
+    codificado = []
+    for caracter in texto:
+        if caracter in huffmanCode:
+            codificado.append(huffmanCode[caracter])
+    return ''.join(codificado)
 
 def index(request):
-    return HttpResponse("El proyecto está inicializado aquí")
+   
+    if request.method == 'POST' and request.FILES['file']:
+        uploaded_file = request.FILES['file']
 
-# Create your views here.
+        try:
+            texto = uploaded_file.read().decode('utf-8')
+        except UnicodeDecodeError:
+            return render(request,"huffman/error.html", {'error':'Formato de archivo no válido'})
+        
+        freq=get_frequency(texto)
+        node=create_nodes(freq)
+        huffmanCode = huffman_code_tree(node[0][0])
+
+        coded=code_text(texto, huffmanCode)
+
+        return render(request,"huffman/resultados.html",{'texto': texto, 'nodes':node, 'huffmanCode' : huffmanCode, 'coded':coded, 'freq':freq})
+    
+    return render(request, "huffman/upload.html")
