@@ -59,12 +59,36 @@ def comprimirTexto(texto):
     [(format(rango[0], '.750f'), format(rango[1], '.750f')) for rango in rangoAntiguo],  # Formatear rangos antiguos
     [(format(rango[0], '.750f'), format(rango[1], '.750f')) for rango in rangoNuevo]     # Formatear rangos nuevos
 ))
-
+    textoDescomprimido = descomprimirTexto(compresion,rangos,caracteres)
     return {
         'tablaCaracteres': tablaCaracteres,
         'tablaCalculos':tablaCalculos,
-        'compresion': compresion
+        'compresion': compresion,
+        'textoDescomprimido':textoDescomprimido
     }
+
+def descomprimirTexto(texto,rangos,caracteres):
+    texto = Decimal(texto)
+    texto_descomprimido = ''
+    while True:
+        encontrado = False
+        for i, (lim_inf, lim_sup) in enumerate(rangos):
+            if lim_inf <= texto < lim_sup:
+                # Añadir el carácter correspondiente al texto descomprimido
+                texto_descomprimido += caracteres[i]
+                encontrado = True
+
+                # Actualizar el valor comprimido
+                ancho_rango = lim_sup - lim_inf
+                texto = (texto - lim_inf) / ancho_rango
+
+                break
+        # Si no se encontró ningún rango, detener el proceso
+        if not encontrado or texto == 0:
+            break
+
+    return texto_descomprimido
+
 
 def index(request):
     if request.method == 'POST' and request.FILES['file']:
