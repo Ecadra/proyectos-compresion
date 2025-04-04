@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {%for fila in freq%}
+                    {%for fila in frequency%}
                     <tr>
                         <td>'{{fila.0}}'</td>
                         <td>{{fila.1}}</td>
@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {%for fila in huffmanCodeItems%}
+                    {%for fila in huffmanCodes.items %}
                     <tr>
                         <td>'{{fila.0}}'</td>
                         <td>{{fila.1}}</td>
@@ -56,6 +56,18 @@
                 <div class="card-body">
                     <h5 class="card-title">Texto codificado</h5>
                     <p class="card-text">{{coded}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "card">
+                <div class="card-body">
+                    <h5 class="card-title">Texto decodificado</h5>
+                    <p class="card-text">{{decoded}}</p>
                 </div>
             </div>
         </div>
