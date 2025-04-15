@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{%block title%}Codifcación Delta del texto seleccionado {%endblock%}
+
+{% block content%}
+<div class = "container mt-5">
+    <div class = "col">
+        <h1 class = "text-center">Texto analizado</h1>
+        <p class = "text-justify">{{ texto }}</p>
+
+            <h2>Arreglos resultantes</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class = "thead-dark">
+                        <tr>
+                            <th scope="col">Carcteres convertido a ASCII</th>
+                            <th scope="col">Nueva lista</th>
+                            <th scope="col">Lista decodificada</th>
+                            
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {%for fila in delta.tabla_interfaz%}
+                        <tr>
+                            <td>{{ fila.0 }}</td>
+                            <td>{{ fila.1 }}</td>
+                            <td>{{ fila.2 }}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+
+                </table> 
+            </div>
+
+            <div class="col-md-4">
+                <div class= "card">
+                    <div class="card-body">
+                        <h5 class="card-title">Texto Decodificado</h5>
+                        <p class="card-text">{{delta.textDecoded}}</p>
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+    </div>
+</div>
+{% endblock  %}
