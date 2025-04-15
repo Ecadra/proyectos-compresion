@@ -7,6 +7,7 @@ def home(request):
             {'name': 'Estadistico', 'url': 'estadistico:index'},
             {'name': 'Huffman', 'url': 'huffman:index'},
             {'name': 'Aritmetica', 'url': 'aritmetica:index'},
-            {'name': 'LZW', 'url':'LZW:index' }
+            {'name': 'LZW', 'url':'LZW:index' },
+            {'name': 'delta', 'url':'delta:index'},
         ]
     })

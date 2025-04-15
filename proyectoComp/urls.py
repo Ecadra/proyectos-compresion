@@ -26,4 +26,5 @@ urlpatterns = [
     path('estadistico/', include('apps.estadistico.urls'), name='estadistico'),
     path('huffman/', include('apps.huffman.urls'),name='huffman'),
     path('LZW/', include('apps.LZW.urls'), name = 'LZW'),
+    path('delta/', include('apps.delta.urls'), name = 'delta'),
 ]
