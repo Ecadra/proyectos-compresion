@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultados del análisis{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">Texto Analizado</h1>
+            <p class="text-justify">{{ contexto.texto_original }}</p>
+            <p><strong>Tamaño de la cadena original:</strong> {{contexto.tamaño_original}}</p>
+            <h1 class="text-center mb-4">Resultados de la codificación</h1>
+            <h2 class  = "text-center">Texto codificado:</h2>
+            <p class="text-justify">{{ contexto.texto_comprimido }}</p>
+            <p><strong>Tamaño de la cadena codificada:</strong> {{contexto.tamaño_comprimido}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
