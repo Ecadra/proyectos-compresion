@@ -1,0 +1,28 @@
+from django.shortcuts import render
+
+# Create your views here.
+def compresion_rle(texto):
+    texto = "aaaeebsssss"
+    resultado_compresion = []
+    car_actual = texto[0]
+    repeticiones = 1
+
+    for car in texto[1:]:
+        if car == car_actual:
+            repeticiones += 1
+        else:
+            resultado_compresion.append(f'{repeticiones}{car_actual}')
+            car_actual = car
+            repeticiones = 1
+    resultado_compresion.append(f'{repeticiones}{car_actual}')
+    return {
+        'texto_comprimido': resultado_compresion,
+        'texto_original':texto
+    }
+
+def index(request):
+    if request.method == 'POST' and request.FILES['file']:
+        archivo_subido = request.FILES['file']
+        texto = archivo_subido.read().strip()
+        contexto = compresion_rle(texto)
+        return render(request, 'rle/resultados.html',{'contexto': contexto, 'texto': texto})
