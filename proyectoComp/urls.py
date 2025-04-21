@@ -25,7 +25,7 @@ urlpatterns = [
     path('entropia/', include('apps.entropia.urls'), name='entropia'),
     path('estadistico/', include('apps.estadistico.urls'), name='estadistico'),
     path('huffman/', include('apps.huffman.urls'),name='huffman'),
-    path('run_lenght_encoding/',include('apps.rle.urls'),name = 'rle')
-    path('LZW/', include('apps.LZW.urls'), name = 'LZW'), 
+    path('run_lenght_encoding/',include('apps.rle.urls'),name = 'rle'),
+    path('LZW/', include('apps.LZW.urls'), name = 'LZW'),
     path('delta/', include('apps.delta.urls'), name = 'delta'),
 ]
