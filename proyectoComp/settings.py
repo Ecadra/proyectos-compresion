@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'apps.estadistico',
     'apps.huffman',
     'apps.core',
-    'apps.rle'
+    'apps.rle',
+    'apps.lz78'
 ]
 
 MIDDLEWARE = [
