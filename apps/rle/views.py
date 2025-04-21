@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 # Create your views here.
 def compresion_rle(texto):
-    texto = "aaaeebsssss"
     resultado_compresion = []
     car_actual = texto[0]
     repeticiones = 1
