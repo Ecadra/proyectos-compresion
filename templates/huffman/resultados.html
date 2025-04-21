@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+
+{%block title%}Codificación de huffman {%endblock%}
+
+{% block content %}
+<div class = "container mt-5">
+    <div class = "col">
+        <h1 class = "text-center">Texto a codificar</h1>
+        <h3 class = "text-justify">{{ texto }}</h3>
+
+        <h2>Tabla de ocurrencia</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>
+                        <th scope='col'>Simbolo</th>
+                        <th scope='col'>Ocurrencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for fila in frequency%}
+                    <tr>
+                        <td>'{{fila.0}}'</td>
+                        <td>{{fila.1}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Tabla de codigos</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>
+                        <th scope='col'>Simbolo</th>
+                        <th scope='col'>Código</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for fila in huffmanCodes.items %}
+                    <tr>
+                        <td>'{{fila.0}}'</td>
+                        <td>{{fila.1}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "card">
+                <div class="card-body">
+                    <h5 class="card-title">Texto codificado</h5>
+                    <p class="card-text">{{coded}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "card">
+                <div class="card-body">
+                    <h5 class="card-title">Texto decodificado</h5>
+                    <p class="card-text">{{decoded}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+
+    
+
+</div>
+{% endblock  %}

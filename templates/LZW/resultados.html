@@ -1,0 +1,114 @@
+{% extends 'base.html'%}
+
+{% block title %}Códificación LZW{%endblock%}
+
+{% block content %}
+<div class = "container mt-5">
+    <h1 class = "text-center">Texto analizado</h1>
+    <p class = "text-justify">{{ texto }}</p>
+
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>
+                        
+                        <th scope="col">Diccionario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for fila in LZW.dictionary %}
+                    <tr>
+                            <td>{{fila}}</td>   
+                    </tr> 
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>  
+                        <th scope="col">Pasado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for fila in LZW.past %}
+                    <tr>
+                            <td>{{fila}}</td>   
+                    </tr> 
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>  
+                        <th scope="col">Presente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for fila in LZW.presentList %}
+                    <tr>
+                            <td>{{fila}}</td>   
+                    </tr> 
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>  
+                        <th scope="col">Futuro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for fila in LZW.futureList %}
+                    <tr>
+                            <td>{{fila}}</td>   
+                    </tr> 
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class = "thead-dark">
+                    <tr>  
+                        <th scope="col">Salida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for fila in LZW.output %}
+                    <tr>
+                            <td>{{fila}}</td>   
+                    </tr> 
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "row">
+            <div class = "col-md-4">
+                <div class = "card">
+                    <div class="card-body">
+                        <h5 class="card-title">Texto decodificado</h5>
+                        <p class="card-text">{{LZW.decoded}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+</div>
+{% endblock  %}

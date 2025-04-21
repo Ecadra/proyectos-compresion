@@ -17,7 +17,7 @@
                             <th scope="col">Número de repeticiones</th>
                             <th scope="col">Frecuencia</th>
                             <th scope="col">Logaritmo base 2 de la frecuencia</th>
-                            <th scope="col">Frecuencia + Logaritmo</th>
+                            <th scope="col">Frecuencia x Logaritmo</th>
                         </tr>
 
                     </thead>
@@ -53,7 +53,7 @@
                 <div class = "col-md-4">
                     <div class = "card">
                         <div class="card-body">
-                            <h5 class="card-title">Sumatoria total de los logaritmos</h5>
+                            <h5 class="card-title">Sumatoria total de Frecuencia x Logaritmo</h5>
                             <p class="card-text">{{entropia.totalSumatoria | floatformat:4}}</p>
                         </div>
                     </div>
@@ -71,11 +71,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class= "card">
+                        <div class="card-body">
+                            <h5 class="card-title">Entropia de Shannon total</h5>
+                            <p class="card-text">{{entropia.entropiaMultiplicacion}}</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-4">
                     <div class= "card">
                         <div class="card-body">
                             <h5 class="card-title">Interpretación</h5>
-                            <p class="card-text"> Se necesitan al menos {{entropia.entropia}} bits para poder representar cada símbolo.
+                            <p class="card-text"> Se necesitan al menos {{entropia.entropiaMultiplicacion}} bits para poder representar todo el texto.
                                 Representar los símbolos por debajo de este umbral puede provocar pérdidas de información
                             </p>
                         </div>

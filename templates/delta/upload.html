@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{% block  title%}Introducir texto {% endblock %}
+
+{% block content%}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div  class = "card-header bg-primary text-white">
+                    <h1 class = "card-title text-center">Codificación Delta</h1>
+                </div> 
+                <div class = "card-body">
+                    <form method = "post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Selecciona un archivo de texto</label>
+                            <input type="file" class="form-control" id="file" name="file" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Subir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

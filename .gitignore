@@ -11,3 +11,4 @@
 # Ignorar archivos de IDE
 .idea/
 .vscode/
+.qodo
