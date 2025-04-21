@@ -28,4 +28,5 @@ urlpatterns = [
     path('run_lenght_encoding/',include('apps.rle.urls'),name = 'rle'),
     path('LZW/', include('apps.LZW.urls'), name = 'LZW'),
     path('delta/', include('apps.delta.urls'), name = 'delta'),
+    path('lz78/',include('apps.lz78.urls'),name = 'lz78')
 ]
