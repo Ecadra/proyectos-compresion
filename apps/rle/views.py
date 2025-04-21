@@ -16,12 +16,15 @@ def compresion_rle(texto):
     resultado_compresion.append(f'{repeticiones}{car_actual}')
     return {
         'texto_comprimido': resultado_compresion,
-        'texto_original':texto
+        'texto_original':texto,
+        'tamaño_original': len(texto),
+        'tamaño_comprimido':len(''.join(resultado_compresion))
     }
 
 def index(request):
     if request.method == 'POST' and request.FILES['file']:
         archivo_subido = request.FILES['file']
-        texto = archivo_subido.read().strip()
+        texto = archivo_subido.read().decode('utf-8').strip()
         contexto = compresion_rle(texto)
         return render(request, 'rle/resultados.html',{'contexto': contexto, 'texto': texto})
+    return render(request,'rle/upload.html')
