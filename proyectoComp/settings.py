@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'apps.entropia',
     'apps.estadistico',
     'apps.huffman',
-    'apps.core'
-    
+    'apps.core',
+    'apps.rle'
 ]
 
 MIDDLEWARE = [
